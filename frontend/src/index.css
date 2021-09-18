@@ -1,0 +1,33 @@
+main {
+  min-height: 80vh;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+
+.carousel {
+  width: 800px;
+  height: 500px;
+  margin: auto;
+}
+
+@media (max-width: 900px) {
+  .carousel {
+    width: auto;
+    height: auto;
+  }
+}
+
+.hovering:hover {
+  width: 30rem;
+}
+
+.page-item.active .page-link {
+  color: rgb(0, 0, 0) !important;
+  background-color: orange !important;
+}
