@@ -84,6 +84,5 @@ namespace Games_Dir_api.Controllers
             var paid = await _payPalService.PayOrder(id);
             return Ok(paid);
         }
-
     }
 }
