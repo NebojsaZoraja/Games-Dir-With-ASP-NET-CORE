@@ -18,6 +18,13 @@ namespace Games_Dir_api.Data.Services
 
         public async Task<bool> AddReview(int gameId, ReviewVM review, string userId)
         {
+            var reviews = await _context.Reviews.FirstOrDefaultAsync(r => r.UserId == userId);
+
+            if(reviews != null)
+            {
+                return false;
+            }
+
             var _newReview = new Review()
             {
                 GameId = gameId,

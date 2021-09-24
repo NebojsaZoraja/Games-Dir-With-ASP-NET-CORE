@@ -34,7 +34,7 @@ namespace Games_Dir_api.Controllers
             bool added = await _reviewsService.AddReview(id, review, currentUserId);
             if (!added)
             {
-                return BadRequest("Review wasn't added");
+                return BadRequest(new Exception("Review wasn't posted"));
             }
             return Ok("Review added");
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nebojša\\Desktop\\Games-Dir-api\\Games-Dir-api\\Games-Dir-api.csproj": {}
+    "C:\\Users\\Nebojša\\Desktop\\Games-Dir-ASP.NET\\Games-Dir-api\\Games-Dir-api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nebojša\\Desktop\\Games-Dir-api\\Games-Dir-api\\Games-Dir-api.csproj": {
+    "C:\\Users\\Nebojša\\Desktop\\Games-Dir-ASP.NET\\Games-Dir-api\\Games-Dir-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nebojša\\Desktop\\Games-Dir-api\\Games-Dir-api\\Games-Dir-api.csproj",
+        "projectUniqueName": "C:\\Users\\Nebojša\\Desktop\\Games-Dir-ASP.NET\\Games-Dir-api\\Games-Dir-api.csproj",
         "projectName": "Games-Dir-api",
-        "projectPath": "C:\\Users\\Nebojša\\Desktop\\Games-Dir-api\\Games-Dir-api\\Games-Dir-api.csproj",
+        "projectPath": "C:\\Users\\Nebojša\\Desktop\\Games-Dir-ASP.NET\\Games-Dir-api\\Games-Dir-api.csproj",
         "packagesPath": "C:\\Users\\Nebojša\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nebojša\\Desktop\\Games-Dir-api\\Games-Dir-api\\obj\\",
+        "outputPath": "C:\\Users\\Nebojša\\Desktop\\Games-Dir-ASP.NET\\Games-Dir-api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nebojša\\AppData\\Roaming\\NuGet\\NuGet.Config",

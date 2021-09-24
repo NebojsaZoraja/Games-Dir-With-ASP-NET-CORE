@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xyC1qLN/QJIxo4ED9PCrVyjSVVHHGLGjekoOn2G9De3YzmpmJ1hE1coh+lXJzJ8yZMlMxPshe6GKHCWpC5aRdw==",
+  "dgSpecHash": "4bNwc91NR42PuR+AvknBwRZzBTboW92dnITREl2bxqIJh+HPbxxdGHXJWBKu8tnahw2Y57OB8LKUS/QcaW+rjA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nebojša\\Desktop\\Games-Dir-api\\Games-Dir-api\\Games-Dir-api.csproj",
+  "projectFilePath": "C:\\Users\\Nebojša\\Desktop\\Games-Dir-ASP.NET\\Games-Dir-api\\Games-Dir-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nebojša\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Nebojša\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.10\\microsoft.aspnetcore.authentication.jwtbearer.5.0.10.nupkg.sha512",

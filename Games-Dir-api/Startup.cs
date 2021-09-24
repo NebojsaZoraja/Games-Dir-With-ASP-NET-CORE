@@ -1,7 +1,6 @@
 using Games_Dir_api.Configuration;
 using Games_Dir_api.Data;
 using Games_Dir_api.Data.Services;
-using Games_Dir_api.Exceptions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -114,8 +113,6 @@ namespace Games_Dir_api
             app.UseAuthorization();
 
             //Exception Handling
-
-            app.ConfigureBuiltInExceptionHandler();
 
             app.UseEndpoints(endpoints =>
             {

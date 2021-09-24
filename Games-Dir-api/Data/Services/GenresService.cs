@@ -65,9 +65,17 @@ namespace Games_Dir_api.Data.Services
 
             if(_genre != null)
             {
-                _context.Genres.Remove(_genre);
-                await _context.SaveChangesAsync();
-                return true;
+                try
+                {
+                    _context.Genres.Remove(_genre);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+                
             }
             return false;
         }

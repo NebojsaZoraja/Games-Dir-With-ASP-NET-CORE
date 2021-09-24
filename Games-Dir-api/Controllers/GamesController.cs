@@ -84,7 +84,7 @@ namespace Games_Dir_api.Controllers
             var game = await _gamesService.GetGameById(id);
             if (game == null)
             {
-                return NotFound("Game not found");
+                return NotFound(new Exception("Game not found"));
             }
             else
             {
@@ -98,7 +98,7 @@ namespace Games_Dir_api.Controllers
             var game = await _gamesService.GetGameByIdAdmin(id);
             if (game == null)
             {
-                return NotFound("Game not found");
+                return NotFound(new Exception("Game not found"));
             }
             else
             {
@@ -129,7 +129,7 @@ namespace Games_Dir_api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new Exception(ex.Message));
             }
 
         }

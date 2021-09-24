@@ -38,7 +38,7 @@ namespace Games_Dir_api.Controllers
             var genre = await _genresService.GetGenreById(id);
             if(genre == null)
             {
-                return NotFound("Genre not found");
+                return NotFound(new Exception("Genre not found"));
             }
             return Ok(genre);
         }
@@ -73,7 +73,7 @@ namespace Games_Dir_api.Controllers
             bool deleted = await _genresService.DeleteGenreById(id);
             if (!deleted)
             {
-                return BadRequest("Genre not found");
+                return BadRequest(new Exception("Genre could not be deleted because there is a game associated with it."));
             }
             return Ok();
         }

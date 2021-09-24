@@ -24,7 +24,7 @@ namespace Games_Dir_api.Data.Services
                 Title = "Sample title",
                 Publisher = "Sample publisher",
                 Price = 0,
-                GenreId = await _context.Genres.Where(gen => gen.Name == "FPS").Select(gen => gen.Id).FirstOrDefaultAsync(),
+                GenreId = await _context.Genres.Select(g => g.Id).FirstOrDefaultAsync(),
                 Image = "/images/sample.jpg",
                 Rating = 0,
                 Description = "Sample desc",

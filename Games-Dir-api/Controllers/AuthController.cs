@@ -43,18 +43,16 @@ namespace Games_Dir_api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var existingUser = await _userManager.FindByEmailAsync(user.Email); 
+                var existingUser = await _userManager.FindByEmailAsync(user.Email);
+                var existingName = await _userManager.FindByNameAsync(user.Name);
 
                 if(existingUser != null)
                 {
-                    return BadRequest(new UserRegistrationResponseVM()
-                    {
-                        Errors = new List<string>()
+                    return BadRequest(new Exception("Email already in use"));
+                }
+                if (existingName != null)
                 {
-                    "Email already in use"
-                },
-                        Success = false
-                    });
+                    return BadRequest(new Exception("Username already in use"));
                 }
                 var count = await _context.ApplicationUsers.CountAsync();
                 var newUser = new ApplicationUser() { Email = user.Email, UserName = user.Name, DateCreated = DateTime.Now };
@@ -82,26 +80,12 @@ namespace Games_Dir_api.Controllers
                 }
                 else
                 {
-                    return BadRequest(new UserRegistrationResponseVM()
-                    {
-                        Errors = new List<string>()
-                {
-                    "User not created"
-                },
-                        Success = false
-                    });
+                    return BadRequest(new Exception("User not created"));
                 }
 
             }
 
-            return BadRequest(new UserRegistrationResponseVM()
-            {
-                Errors = new List<string>()
-                {
-                    "Invalid payload"
-                },
-                Success = false
-            });
+            return BadRequest(new Exception("Invalid data"));
         }
 
         //LOGIN
@@ -114,28 +98,14 @@ namespace Games_Dir_api.Controllers
                 
                 if(existingUser == null)
                 {
-                    return BadRequest(new UserRegistrationResponseVM()
-                    {
-                        Errors = new List<string>()
-                {
-                    "Invalid email or password"
-                },
-                        Success = false
-                    });
+                    return BadRequest(new Exception("Invalid email or password"));
                 }
 
                 var isCorrect = await _userManager.CheckPasswordAsync(existingUser, user.Password);
 
                 if (!isCorrect)
                 {
-                    return BadRequest(new UserRegistrationResponseVM()
-                    {
-                        Errors = new List<string>()
-                {
-                    "Invalid email or password"
-                },
-                        Success = false
-                    });
+                    return BadRequest(new Exception("Invalid email or password"));
                 }
 
                 var jwtToken = await GenerateToken(existingUser);
@@ -148,14 +118,7 @@ namespace Games_Dir_api.Controllers
                     IsAdmin = await _userManager.IsInRoleAsync(existingUser, "Admin"),
                 });
             }
-            return BadRequest(new UserRegistrationResponseVM()
-            {
-                Errors = new List<string>()
-                {
-                    "Invalid payload"
-                },
-                Success = false
-            });
+            return BadRequest(new Exception("Invalid data"));
         }
         
         //GET ALL USERS
@@ -213,7 +176,7 @@ namespace Games_Dir_api.Controllers
                     Email = user.Email,
                 });
             }
-            return NotFound("Invalid user");
+            return NotFound(new Exception("Invalid token, please log in again"));
         }
 
         //EDIT USER PROFILE
@@ -228,9 +191,13 @@ namespace Games_Dir_api.Controllers
             {
                 user.UserName = updatedUser.Name;
                 user.Email = updatedUser.Email;
-                if(updatedUser.Password != null)
+                if(!String.IsNullOrEmpty(updatedUser.Password))
                 {
                     user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, updatedUser.Password);
+                }
+                else
+                {
+                    user.PasswordHash = user.PasswordHash;
                 }
 
                 await _context.SaveChangesAsync();
@@ -242,7 +209,7 @@ namespace Games_Dir_api.Controllers
                     Email = user.Email,
                 });
             }
-            return NotFound("Invalid user");
+            return NotFound(new Exception("Invalid user"));
 
         }
 
@@ -274,7 +241,7 @@ namespace Games_Dir_api.Controllers
 
                 return Ok("User updated successfully");
             }
-            return BadRequest("Invalid User");
+            return BadRequest(new Exception("Invalid User"));
         }
 
         //DELETE USER ADMIN
@@ -290,7 +257,7 @@ namespace Games_Dir_api.Controllers
                 await _context.SaveChangesAsync();
                 return Ok("User deleted successfully!");
             }
-            return NotFound("User not found");
+            return NotFound(new Exception("User not found"));
         }
 
 
